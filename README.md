@@ -9,7 +9,7 @@ This is useful for organizing photos, backups, automation workflows, and cleanin
 
 
 
-📚 Libraries Used
+Libraries Used
 1. os (Built-in Library)
 
 The os module is used to interact with the operating system.
