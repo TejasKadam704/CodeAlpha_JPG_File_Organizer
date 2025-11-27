@@ -1,0 +1,32 @@
+import os
+import shutil
+from datetime import datetime
+
+def move_jpg_files(source_folder, destination_folder):
+    
+    os.makedirs(destination_folder, exist_ok=True)
+
+
+    log_file = os.path.join(destination_folder, "moved_files_log.txt")
+
+    moved_count = 0
+
+    with open(log_file, "a") as log:
+        log.write(f"\n--- Run at {datetime.now()} ---\n")
+
+        for filename in os.listdir(source_folder):
+            if filename.lower().endswith(".jpg"):
+                src_path = os.path.join(source_folder, filename)
+                dst_path = os.path.join(destination_folder, filename)
+
+                shutil.move(src_path, dst_path)
+                moved_count += 1
+                
+                print(f"[✔] Moved: {filename}")
+                log.write(f"Moved: {filename}\n")
+
+    print(f"\nTotal JPG files moved: {moved_count}")
+    print(f"Log saved at: {log_file}")
+
+
+move_jpg_files("C:/Users/YourName/Pictures/old", "C:/Users/YourName/Pictures/new")
